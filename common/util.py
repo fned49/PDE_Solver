@@ -24,3 +24,11 @@ def create_boundary_mask(size):
     mask[0, :] = 1  # 아래쪽 경계
     mask[-1, :] = 1  # 위쪽 경계
     return mask.unsqueeze(0).unsqueeze(0)  # (1, 1, H, W) 형태로 변환
+
+def create_interior_mask(size):
+    mask = torch.ones(size, dtype=torch.float32)
+    mask[:, 0] = 0  # 왼쪽 경계
+    mask[:, -1] = 0  # 오른쪽 경계
+    mask[0, :] = 0  # 아래쪽 경계
+    mask[-1, :] = 0  # 위쪽 경계
+    return mask.unsqueeze(0).unsqueeze(0)  # (1, 1, H, W) 형태로 변환
