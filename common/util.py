@@ -2,7 +2,7 @@ import numpy as np
 import torch
 import torch.nn as nn
 
-def ㄴ(f_matrix, g=0):
+def Dirichlet_bc_array(f_matrix, g=0):
     f = f_matrix.copy()
     f[:, 0] = g  # 왼쪽 경계
     f[:, -1] = g  # 오른쪽 경계
